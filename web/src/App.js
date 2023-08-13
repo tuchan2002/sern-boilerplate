@@ -2,8 +2,7 @@ function App() {
     return (
         <div>
             <p>
-                Hello World
-            </p>
+                Hello World</p>
         </div>
     );
 }
