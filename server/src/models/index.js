@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const dbConfig = require('../configs/dbConfig');
 
 const sequelize = new Sequelize(
@@ -33,6 +33,8 @@ sequelize
 const db = {};
 
 db.sequelize = sequelize;
+
+db.Message = require('./message')(sequelize, DataTypes);
 
 db.sequelize.sync({ alter: true }).then(() => {
     console.log('All models were synchronized successfully.');
