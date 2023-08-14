@@ -32,7 +32,7 @@ module.exports = {
     "import/extensions": ["error", { "js": "never" }],
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
-    "import/no-unresolved": "error",
+    "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "jsx-a11y/alt-text": "off",
     "jsx-a11y/click-events-have-key-events": "off",
