@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: "/",
+    baseURL: '/'
 });
 
-export default axiosClient
+export default axiosClient;
