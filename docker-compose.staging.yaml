@@ -18,6 +18,16 @@ services:
     networks:
       - server-network
 
+  adminer:
+    container_name: sern_adminer
+    image: adminer:latest
+    restart: always
+    environment: 
+      - ADMINER_DEFAULT_SERVER=mysqldb
+      - ADMINER_DESIGN=galkaev
+    ports: 
+      - 8080:8080
+
   server:
     container_name: sern_server
     depends_on:
@@ -26,7 +36,7 @@ services:
     restart: always
     env_file: ./.env
     ports:
-      - 8080:8080
+      - 8000:8000
     environment:
       - DB_HOST=mysqldb
       - DB_USER=$MYSQLDB_USER
@@ -34,7 +44,7 @@ services:
       - DB_NAME=$MYSQLDB_DATABASE
       - DB_PORT=$MYSQLDB_CONTAINER_PORT
     expose:
-      - 8080
+      - 8000
     networks:
       - server-network
       - web-network
