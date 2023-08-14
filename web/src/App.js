@@ -1,8 +1,21 @@
+import { useEffect, useState } from 'react';
+import axiosClient  from './utils/axios';
+
 function App() {
+    const [greeting, setGreeting] = useState('');
+
+    useEffect(() => {
+        const fetchDataTest = async () => {
+            const response = await axiosClient.get('api/v1/test');
+            setGreeting(response.data.message);
+        };
+        fetchDataTest();
+    }, []);
+
     return (
         <div>
             <p>
-                Hello World.
+                {greeting}
             </p>
         </div>
     );
