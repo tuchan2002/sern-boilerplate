@@ -60,7 +60,17 @@ jobs:
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
-  
+  deploy:
+    machine:
+      image: ubuntu-2004:current
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a2:35:0a:f0:05:fb:1c:96:f8:4d:78:14:c2:4d:b8:cc"
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh -oStrictHostKeyChecking=no -v 'tuchanvnu-testgitpod-gb0khs8e87p@tuchanvnu-testgitpod-gb0khs8e87p.ssh.ws-us102.gitpod.io' "./deploy.sh"
 
 workflows:
   test-build-deploy:
@@ -80,3 +90,7 @@ workflows:
             branches:
               only:
                 - master
+      - deploy:
+          requires:
+            - build-and-push-backend
+            - build-and-push-frontend
