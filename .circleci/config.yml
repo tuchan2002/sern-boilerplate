@@ -66,7 +66,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "a2:35:0a:f0:05:fb:1c:96:f8:4d:78:14:c2:4d:b8:cc"
+            - "ac:7d:dc:82:e4:b6:c8:ef:ef:80:9e:d9:2e:92:e2:0d"
       - run:
           name: Deploy Over SSH
           command: |
