@@ -33,6 +33,7 @@ function App() {
                 alignItems: 'center'
             }}
         >
+            <Typography sx={{ fontSize: 25, fontWeight: 'bold' }}>Version 1.1</Typography>
             <Box component='form' onSubmit={handleSendMessage} noValidate>
                 <TextField
                     variant='outlined'
