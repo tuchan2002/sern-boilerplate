@@ -11,8 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// app.use('/api/v1', appRoute);
-app.get('/api/v1/test', (req, res) => res.status(200).json({
+app.use('/api/v1', appRoute);
+app.get('*', (req, res) => res.status(200).json({
     message: 'Hello World.'
 }));
 
