@@ -29,7 +29,6 @@ module.exports = {
     "consistent-return": "off",
     "eqeqeq": "off",
     "function-paren-newline": "off",
-    "import/extensions": ["error", { "js": "never" }],
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "import/no-unresolved": "off",
