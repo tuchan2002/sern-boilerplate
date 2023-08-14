@@ -66,6 +66,13 @@ workflows:
   test-build-deploy:
     jobs:
       - eslint
+      - build-and-push-backend:
+          requires:
+            - eslint
+          filters:
+            branches:
+              only:
+                - master
       - build-and-push-frontend:
           requires:
             - eslint
