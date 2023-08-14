@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use('/api/v1', appRoute);
 app.get('*', (req, res) => res.status(200).json({
-    message: 'Hello World'
+    message: 'Hello World.'
 }));
 
 const port = process.env.PORT || 8080;

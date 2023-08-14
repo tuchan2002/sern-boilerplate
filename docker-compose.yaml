@@ -35,8 +35,7 @@ services:
       - DB_NAME=$MYSQLDB_DATABASE
       - DB_PORT=$MYSQLDB_CONTAINER_PORT
     volumes:
-      - ./server:/sern-server
-      - /sern-server/node_modules
+      - ./server:/server
     networks:
       - server-network
       - web-network
@@ -50,12 +49,14 @@ services:
       context: ./web
     ports:
       - 5050:80
+    volumes:
+      - ./web/build:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - web-network
 
 volumes:
   sern-db:
-  sern-server:
 
 networks:
   server-network:
