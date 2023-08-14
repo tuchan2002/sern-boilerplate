@@ -14,9 +14,9 @@ jobs:
       - run:
           command: npm run lint
           name: Run Lint
-  build-and-push:
+  build-and-push-server:
     environment:
-      DOCKER_IMAGE: tuchan17/sern-boilerplate
+      DOCKER_IMAGE: tuchan17/sern-boilerplate_server
       DOCKER_TAG: latest
     executor: docker/docker
     steps:
@@ -35,6 +35,28 @@ jobs:
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
+  build-and-push-web:
+    environment:
+      DOCKER_IMAGE: tuchan17/sern-boilerplate_web
+      DOCKER_TAG: latest
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check:
+          docker-username: DOCKER_USERNAME
+          docker-password: DOCKER_PASSWORD
+      - docker/build:
+          image: $DOCKER_IMAGE
+          tag: $DOCKER_TAG
+      - docker/push:
+          digest-path: /tmp/digest.txt
+          image: $DOCKER_IMAGE
+          tag: $DOCKER_TAG
+      - run:
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
+  
 
 workflows:
   test-build-deploy:
