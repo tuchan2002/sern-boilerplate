@@ -17,6 +17,7 @@ function App() {
             <p>
                 {greeting}
             </p>
+            <p>Copyright by TuChan</p>
         </div>
     );
 }
