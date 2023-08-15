@@ -34,7 +34,7 @@ function App() {
                 alignItems: 'center'
             }}
         >
-            <Typography sx={{ fontSize: 28, fontWeight: 'bold' }}>Version 1.5</Typography>
+            <Typography sx={{ fontSize: 28, fontWeight: 'bold' }}>Version 1.6</Typography>
             <Box component='form' onSubmit={handleSendMessage} noValidate>
                 <TextField
                     variant='outlined'
