@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Divider, List, ListItem, ListItemAvatar, ListItemText, TextField, Typography } from '@mui/material';
+import Person from '@mui/icons-material/Person';
 import axiosClient from './utils/axios';
 
 function App() {
@@ -27,13 +28,13 @@ function App() {
     return (
         <Box
             sx={{
-                marginTop: 4,
+                marginTop: 2,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'
             }}
         >
-            <Typography sx={{ fontSize: 25, fontWeight: 'bold' }}>Version 1.2</Typography>
+            <Typography sx={{ fontSize: 28, fontWeight: 'bold' }}>Version 1.5</Typography>
             <Box component='form' onSubmit={handleSendMessage} noValidate>
                 <TextField
                     variant='outlined'
@@ -56,12 +57,33 @@ function App() {
                 </Button>
             </Box>
 
-            <Box
-                sx={{ marginTop: 1, width: 300}}
-            >
-                <Typography sx={{ fontSize: 20, fontWeight: 'medium' }}>Messages:</Typography>
-                {messages.map((msg) => <Typography sx={{ typography: 'body1' }}>{`${msg.content}`}</Typography>)}
-            </Box>
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', mb: 2 }}>
+                {messages.map((msg) => (
+                    <>
+                        <ListItem alignItems='flex-start'>
+                            <ListItemAvatar>
+                                <Avatar>
+                                    <Person />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary='Anonymous'
+                                secondary={(
+                                    <Typography
+                                        sx={{ display: 'inline' }}
+                                        component='span'
+                                        variant='body2'
+                                        color='text.primary'
+                                    >
+                                        {msg.content}
+                                    </Typography>
+                                )}
+                            />
+                        </ListItem>
+                        <Divider variant='inset' component='li' />
+                    </>
+                ))}
+            </List>
         </Box>
     );
 }
